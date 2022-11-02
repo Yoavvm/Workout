@@ -6,7 +6,14 @@ import register from './register';
 export type UserState = {
     status: "loading" | "idle" | "pending",
     error: string | null,
-    user: {} | null
+    user: User | null
+}
+
+export type User = {
+    _id:string,
+    email: string,
+    token: string,
+    myWorkouts: string[]
 }
 
 const initialState: UserState = {
@@ -20,7 +27,7 @@ export const UserReducer = createSlice(
         name: 'User',
         initialState,
         reducers: {
-            login: (state, action: PayloadAction<{}>) => {
+            login: (state, action: PayloadAction<User>) => {
                 console.log('login action')
                 state.user = action.payload;
             },
@@ -29,7 +36,7 @@ export const UserReducer = createSlice(
             }
         },
         extraReducers: (builder) => {
-            builder.addCase(loginRequest.fulfilled, (state, action:PayloadAction<any>) => {
+            builder.addCase(loginRequest.fulfilled, (state, action:PayloadAction<User>) => {
                 state.user = action.payload
             })
             builder.addCase(register.fulfilled, (state, action) => {

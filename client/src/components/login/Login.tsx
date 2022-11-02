@@ -14,7 +14,7 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className='login-container'>
             <div>Login</div>
 
             <div className="input-field">

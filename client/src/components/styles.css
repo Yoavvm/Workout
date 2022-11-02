@@ -1,6 +1,36 @@
 .navbar {
     display: flex;
     width: 100vw;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(55, 68, 89);
+    min-height: 50px
+}
+
+.navbar button {
+    background-color: blue;
+    border-radius: 25px;
+    width: 25%;
+    padding: 5px;
+    color: pink;
+}
+
+.container {
+    background-color: aqua;
+    display: flex;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - 50px);
+    padding: 20px;
+
+}
+
+.login-container {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }

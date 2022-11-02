@@ -9,6 +9,10 @@ export type ExercisesState = {
     exercises: [] | null
 }
 
+export type Exercise = {
+    name: string
+}
+
 const initialState: ExercisesState = {
     status: "idle",
     error: null,
