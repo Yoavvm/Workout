@@ -14,7 +14,7 @@ const getAllExercises = async (req, res) => {
 const createExercise = async (req, res) => {
     try {
         await logic.createExercise(req.body);
-        const allExercises = await logic.getAll();
+        const allExercises = await logic.getAllExercises();
         res.json(allExercises);
 
     } catch (error) {

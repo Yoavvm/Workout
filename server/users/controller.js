@@ -31,12 +31,23 @@ const register = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(400).json(error);
+        
+    }
+}
 
+const addWorkout = async(req, res) => {
+    try {
+        const response = await logic.addWorkout(req.body);
+        res.json(response)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json(error);
     }
 }
 
 module.exports = {
     getAll,
     login,
-    register
+    register,
+    addWorkout
 }

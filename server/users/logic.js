@@ -27,10 +27,16 @@ const register = async (registerPayload) => {
     return response;
 }
 
+const addWorkout = async(payload) => {
+    const response = await repo.addWorkout(payload)
+    return response;
+}
+
 
 module.exports = {
     getAll,
     login,
-    register
+    register,
+    addWorkout
 
 }

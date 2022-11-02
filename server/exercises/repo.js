@@ -5,14 +5,15 @@ const getAllExercises = async () => {
     return allExercises;
 }
 
-const register = async ({ email, encryptedPassword }) => {
-    console.log(encryptedPassword)
-    const newUser = await User({ email, password: encryptedPassword })
-    await newUser.save()
-    return 'user created';
+const createExercise = async (payload) => {
+    console.log(payload)
+    const newExercise = await Exercise(payload)
+    await newExercise.save()
+    return;
 }
 
 module.exports = {
     getAllExercises,
-    register
+    createExercise
 }
+

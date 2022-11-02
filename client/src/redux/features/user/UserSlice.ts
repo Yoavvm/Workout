@@ -13,7 +13,7 @@ export type User = {
     _id:string,
     email: string,
     token: string,
-    myWorkouts: string[]
+    myWorkouts: []
 }
 
 const initialState: UserState = {
@@ -37,6 +37,7 @@ export const UserReducer = createSlice(
         },
         extraReducers: (builder) => {
             builder.addCase(loginRequest.fulfilled, (state, action:PayloadAction<User>) => {
+                console.log(action.payload)
                 state.user = action.payload
             })
             builder.addCase(register.fulfilled, (state, action) => {
