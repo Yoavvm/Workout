@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Exercise, ExercisesState, selectExercises } from '../../redux/features/exercises/ExerciseSlice'
+import { Exercise, ExercisesState } from '../../redux/features/exercises/ExerciseSlice'
 import getAll from '../../redux/features/exercises/getAllExercises'
 import { UserState } from '../../redux/features/user/UserSlice'
 import { useAppSelector, useAppDispatch } from '../../redux/Hooks'
@@ -20,7 +20,7 @@ const Exercises = () => {
       <div>
         <div>Exercises</div>
         {exerciseState.exercises && exerciseState.exercises.map((exercise: Exercise, index) => {
-          return (<div key={"exercise" + index}>{exercise.name}</div>)
+          return (<div key={"exercise" + index}>{exercise.exerciseName}</div>)
         })}
 
       </div>

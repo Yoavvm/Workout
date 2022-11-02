@@ -10,8 +10,9 @@ export type ExercisesState = {
 }
 
 export type Exercise = {
-    name: string,
-    url: string
+    _id: string,
+    exerciseName: string,
+    videoUrl: string
 }
 
 const initialState: ExercisesState = {
