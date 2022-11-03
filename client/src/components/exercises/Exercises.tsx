@@ -20,12 +20,26 @@ const Exercises = () => {
       <div>
         <div>Exercises</div>
         {exerciseState.exercises && exerciseState.exercises.map((exercise: Exercise, index) => {
-          return (<div key={"exercise" + index}>{exercise.exerciseName}</div>)
+          return (<ExerciseInfo exercise={exercise} key={'exercise'+ index}/>)
         })}
 
       </div>
       {userState.user?.myWorkouts && <WorkOuts />}
 
+    </div>
+  )
+}
+
+const ExerciseInfo = ({exercise}:{exercise:Exercise}) => {
+
+  return (
+    <div>
+      <div>
+        {exercise.exerciseName}
+      </div>
+      <div>
+        {exercise.videoUrl}
+      </div>
     </div>
   )
 }
