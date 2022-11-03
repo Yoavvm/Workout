@@ -26,12 +26,7 @@ export const ExercisesReducer = createSlice(
         name: 'Exercise',
         initialState,
         reducers: {
-            login: (state, action: PayloadAction<[]>) => {
-                state.exercises = action.payload;
-            },
-            logout: (state) => {
-                state.exercises = null;
-            }
+            
         },
         extraReducers: (builder) => {
             builder.addCase(getAllExercises.fulfilled, (state, action:PayloadAction<any>) => {
@@ -44,7 +39,7 @@ export const ExercisesReducer = createSlice(
     }
 );
 
-export const { login, logout } = ExercisesReducer.actions;
+export const { } = ExercisesReducer.actions;
 
 export const selectExercises = (state: RootState) => state.Exercises;
 
