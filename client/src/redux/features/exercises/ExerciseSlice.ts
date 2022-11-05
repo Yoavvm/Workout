@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
+import createExercise from "./createExercise";
 import getAllExercises from "./getAllExercises";
 
 
@@ -30,6 +31,9 @@ export const ExercisesReducer = createSlice(
         },
         extraReducers: (builder) => {
             builder.addCase(getAllExercises.fulfilled, (state, action:PayloadAction<any>) => {
+                state.exercises = action.payload
+            })
+            builder.addCase(createExercise.fulfilled, (state, action:PayloadAction<any>) => {
                 state.exercises = action.payload
             })
             

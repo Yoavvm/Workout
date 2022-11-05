@@ -24,7 +24,6 @@ const Exercises = () => {
         })}
 
       </div>
-      {userState.user?.myWorkouts && <WorkOuts />}
 
     </div>
   )

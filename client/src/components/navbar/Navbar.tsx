@@ -11,7 +11,7 @@ const Navbar = () => {
     const userState = useAppSelector(state => state.User)
     const dispatch = useAppDispatch();
     const navigateOnClick = ({ innerHTML }: any): void => {
-        innerHTML ? navigate(innerHTML.toLowerCase()) : navigate('')
+        innerHTML ? navigate(innerHTML.toLowerCase().replace(/\s+/g, '')) : navigate('')
     }
 
     const onLogoutClick = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
             {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Login</button>}
             {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Register</button>}
             {userState.user && <button onClick={onLogoutClick}>Logout</button>}
-            <button onClick={(e) => navigateOnClick(e.target)}>Exercises</button>
+            <button onClick={(e) => navigateOnClick(e.target)}>My Account</button>
 
         </div>
     )

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from './components/login/Login';
 import Register from './components/register/Register';
-import Exercises from './components/exercises/Exercises';
 import './App.css'
 import Main from './components/main/Main';
+import MyAccount from './components/MyAccount/MyAccount';
+import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 
 
@@ -20,7 +21,8 @@ function App() {
         <Routes>
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='exercises' element={<Exercises />} />
+          <Route path='myaccount' element={<MyAccount />} />
+          <Route path='admin' element={<AdminDashboard />} />
           <Route path='*' element={<Login />} />
 
         </Routes>
