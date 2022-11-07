@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import loginRequest from '../../redux/features/user/loginRequest';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
+import '../styles.css';
+
 
 const Login = () => {
 
@@ -14,7 +16,7 @@ const Login = () => {
 
 
     return (
-        <div className='login-container'>
+        <div className='login-container container'>
             <div>Login</div>
 
             <div className="input-field">
@@ -26,7 +28,7 @@ const Login = () => {
                 <input type="password" onChange={(e) => { setPassword(e.target.value) }} />
             </div>
             <div>
-                <button onClick={() => handleLoginClick()}>Login</button>
+                <button onClick={handleLoginClick}>Login</button>
             </div>
 
         </div>

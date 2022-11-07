@@ -1,5 +1,7 @@
 import React from 'react'
 import { useAppSelector } from '../../redux/Hooks'
+import '../styles.css';
+
 
 const MyWorkOuts = () => {
 

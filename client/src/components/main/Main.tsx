@@ -1,5 +1,4 @@
 import React from 'react'
-import { JsxElement } from 'typescript'
 import '../styles.css';
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
 
 const Main = (props: Props) => {
   return (
-    <div className='container'>
+    <div className='main-container'>
         {props.children}
     </div>
   )

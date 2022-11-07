@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import Navbar from './components/navbar/Navbar';
 import { Routes, Route } from "react-router-dom";
+
+import Navbar from './components/navbar/Navbar';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
-import './App.css'
 import Main from './components/main/Main';
 import MyAccount from './components/MyAccount/MyAccount';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
+import './components/styles.css'
+import Footer from "./components/footer/Footer";
 
 
 
@@ -14,12 +15,11 @@ function App() {
 
 
   return (
-    <div>
+    <div className="app">
       <Navbar />
       <Main>
 
         <Routes>
-          <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route path='myaccount' element={<MyAccount />} />
           <Route path='admin' element={<AdminDashboard />} />
@@ -27,6 +27,7 @@ function App() {
 
         </Routes>
       </Main>
+      <Footer />
 
     </div>
   );
