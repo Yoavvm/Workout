@@ -20,10 +20,13 @@ export const ExerciseTable = () => {
 
     return (
         <div className='exercise-table'>
-            <div className='exercise-table-header'>
-                <div>one</div>
-                <div>two</div>
-                <div>three</div>
+            <div className='exercise-table-header exercise-line'>
+                <div className="exercise-data">
+                    <div>Exercise Name</div>
+                    <div>Exercise Url</div>
+                </div>
+
+                <div className='exercise-admin-actions'>actions</div>
             </div>
             {exercises.exercises?.map((exercise: Exercise, index) => {
                 return <ExerciseLine key={"exercise" + index} exercise={exercise} />
@@ -33,12 +36,17 @@ export const ExerciseTable = () => {
 }
 
 
-const ExerciseLine = ({exercise} : ExerciseLineProps) => {
+const ExerciseLine = ({ exercise }: ExerciseLineProps) => {
     return (
         <div className='exercise-line'>
-            <div>{exercise.exerciseName}</div>
-            <div>{exercise.videoUrl}</div>
-            <div className='exercise-admin-actions'><i><FaTrashAlt/></i> <i><HiPencil/></i></div>
+            <div className="exercise-data">
+                <div>{exercise.exerciseName}</div>
+                <div>{exercise.videoUrl}</div>
+            </div>
+            <div className='exercise-admin-actions'>
+                <i><HiPencil /></i>
+                <i><FaTrashAlt /></i>
+            </div>
             {'' + " " + ''}
         </div>
     )

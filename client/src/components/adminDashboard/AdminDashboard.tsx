@@ -7,7 +7,7 @@ import '../styles.css';
 
 const AdminDashboard = () => {
   return (
-    <div className='dashboard container'>
+    <div className='container dashboard'>
       <CreateExercise />
       <ExerciseTable />
       {/* <EditExercise /> */}
