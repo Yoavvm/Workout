@@ -12,9 +12,8 @@ const createExercise = async (payload) => {
     return;
 }
 
-const deleteExercise = async (payload) => {
-    console.log(payload)
-    await Exercise.findByIdAndRemove(payload)
+const deleteExercise = async (deletedId) => {
+    await Exercise.findByIdAndRemove(deletedId)
     return;
 }
 

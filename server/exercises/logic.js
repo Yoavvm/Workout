@@ -1,3 +1,4 @@
+const { verifyPermission } = require('../utils/jwtUtil');
 const repo = require('./repo')
 
 const getAllExercises = async () => {
@@ -15,9 +16,14 @@ const createExercise = async (newExercise) => {
     return allExercises;
 }
 
-const deleteExercise = async (data) => {
+const deleteExercise = async (token, deletedId) => {
 
-    await repo.deleteExercise(data);
+    if (!verifyPermission(token)){
+        throw new Error('unauthorized action')
+    }
+
+    await repo.deleteExercise(deletedId) 
+    
 
     const allExercises = await repo.getAllExercises();
     return allExercises;

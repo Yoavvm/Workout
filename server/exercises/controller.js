@@ -25,10 +25,10 @@ const createExercise = async (req, res) => {
 }
 
 const deleteExercise = async (req, res) => {
-    console.log(req.params)
-    console.log(req.headers)
+    const token = req.headers.authorization;
+    const deletedId = req.params.id
     try {
-        // await logic.deleteExercise(req.headers ,req.params.id);
+        await logic.deleteExercise(token, deletedId);
         const allExercises = await logic.getAllExercises();
         res.json(allExercises);
 
