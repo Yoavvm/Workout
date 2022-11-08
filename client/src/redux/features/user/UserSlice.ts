@@ -34,13 +34,7 @@ export const UserReducer = createSlice(
         name: 'User',
         initialState,
         reducers: {
-            login: (state, action: PayloadAction<LoginPayload>) => {
-                console.log(action.payload.token)
-                
-                axios.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`
-                state.user = action.payload.userData;
-
-            },
+            
             logout: (state) => {
                 state.user = null;
             }
@@ -62,7 +56,7 @@ export const UserReducer = createSlice(
     }
 );
 
-export const { login, logout } = UserReducer.actions;
+export const { logout } = UserReducer.actions;
 
 export const selectUser = (state: RootState) => state.User;
 
