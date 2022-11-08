@@ -12,8 +12,9 @@ const encryptPassword = (password) => {
 }
 
 const generateToken = (successfulLoginResponse) => {
-    const { userId, role } = successfulLoginResponse
-    const token = jwt.sign({ userId, role }, config.secret);
+    const { _id, role } = successfulLoginResponse
+    const _idStr = _id.toString()
+    const token = jwt.sign({ _idStr, role }, config.secret);
     return token;
 }
 

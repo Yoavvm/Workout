@@ -12,8 +12,15 @@ const createExercise = async (payload) => {
     return;
 }
 
+const deleteExercise = async (payload) => {
+    console.log(payload)
+    await Exercise.findByIdAndRemove(payload)
+    return;
+}
+
 module.exports = {
     getAllExercises,
-    createExercise
+    createExercise,
+    deleteExercise
 }
 

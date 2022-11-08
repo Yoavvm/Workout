@@ -24,7 +24,23 @@ const createExercise = async (req, res) => {
     }
 }
 
+const deleteExercise = async (req, res) => {
+    console.log(req.params)
+    console.log(req.headers)
+    try {
+        // await logic.deleteExercise(req.headers ,req.params.id);
+        const allExercises = await logic.getAllExercises();
+        res.json(allExercises);
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json(error);
+
+    }
+}
+
 module.exports = {
     getAllExercises,
-    createExercise
+    createExercise,
+    deleteExercise
 }

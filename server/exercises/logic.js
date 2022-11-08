@@ -15,9 +15,18 @@ const createExercise = async (newExercise) => {
     return allExercises;
 }
 
+const deleteExercise = async (data) => {
+
+    await repo.deleteExercise(data);
+
+    const allExercises = await repo.getAllExercises();
+    return allExercises;
+}
+
 
 module.exports = {
     getAllExercises,
-    createExercise
+    createExercise,
+    deleteExercise
 
 }

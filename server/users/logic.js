@@ -1,4 +1,4 @@
-const { encryptPassword } = require('../utils/jwtUtil');
+const { encryptPassword, generateToken } = require('../utils/jwtUtil');
 
 const repo = require('./repo')
 
@@ -7,21 +7,24 @@ const getAll = async () => {
     // const allExercises = await repo.getAll();
     // return allExercises;
 
-    return { string: "get all" }
+    return { string: "get all users" }
 }
 
 const login = async (loginPayload) => {
-
     loginPayload.encryptedPassword = encryptPassword(loginPayload.password)
 
     const userData = await repo.login(loginPayload);
-    return userData;
+    const token = generateToken(userData);
+
+    const response = {userData, token}
+    console.log(response)
+
+    return response;
 }
 
 const register = async (registerPayload) => {
 
     registerPayload.encryptedPassword = encryptPassword(registerPayload.password)
-    console.log(registerPayload)
 
     const response = await repo.register(registerPayload)
     return response;

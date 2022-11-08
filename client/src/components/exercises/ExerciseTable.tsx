@@ -1,10 +1,11 @@
 import React from 'react'
 import { Exercise } from '../../redux/features/exercises/ExerciseSlice'
-import { useAppSelector } from '../../redux/Hooks'
+import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 import Exercises from './Exercises'
 import { FaTrashAlt } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi";
 import '../styles.css';
+import deleteExercise from '../../redux/features/exercises/deleteExercise';
 
 
 
@@ -37,6 +38,8 @@ export const ExerciseTable = () => {
 
 
 const ExerciseLine = ({ exercise }: ExerciseLineProps) => {
+    const dispatch = useAppDispatch();
+
     return (
         <div className='exercise-line'>
             <div className="exercise-data">
@@ -45,7 +48,9 @@ const ExerciseLine = ({ exercise }: ExerciseLineProps) => {
             </div>
             <div className='exercise-admin-actions'>
                 <i><HiPencil /></i>
-                <i><FaTrashAlt /></i>
+                <div onClick={() => dispatch(deleteExercise(exercise._id))}>
+                    <i><FaTrashAlt /></i>
+                </div>
             </div>
             {'' + " " + ''}
         </div>

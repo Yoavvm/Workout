@@ -5,6 +5,7 @@ const userController = require('../users/controller');
 
 router.get('/exercises', exerciseController.getAllExercises);
 router.put('/exercises', exerciseController.createExercise);
+router.delete('/exercises/:id', exerciseController.deleteExercise);
 
 
 router.post('/users', userController.login);
