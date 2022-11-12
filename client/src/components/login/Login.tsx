@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import loginRequest from '../../redux/features/user/loginRequest';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
 import '../styles.css';
@@ -9,10 +10,14 @@ const Login = () => {
 
     const dispatch = useAppDispatch()
     const userState = useAppSelector(state => state.User);
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLoginClick = () => dispatch(loginRequest({ email, password }))
+    const handleLoginClick = () => {
+        dispatch(loginRequest({ email, password }))
+        navigate('myaccount')
+    }
 
 
     return (

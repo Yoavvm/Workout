@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { type } from "os";
+import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store";
 import loginRequest from './loginRequest';
 import register from './register';
@@ -15,7 +15,13 @@ export type User = {
     _id:string,
     email: string,
     token: string,
-    myWorkouts: []
+    myWorkouts: WorkOut[]
+}
+
+export type WorkOut = {
+    name: string,
+    exercises: string[]
+
 }
 
 type LoginPayload = {
@@ -30,6 +36,7 @@ const initialState: UserState = {
 }
 
 export const UserReducer = createSlice(
+
     {
         name: 'User',
         initialState,

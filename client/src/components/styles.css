@@ -162,3 +162,38 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.my-account {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.my-workouts {
+  border: 1px solid black;
+
+}
+
+.my-workouts-title {
+  border-bottom: 3px solid green;
+  text-align: center;
+}
+
+.my-workouts-container {
+  border: 3px solid purple;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-evenly;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+}
+
+.my-workouts-box {
+  padding: 0.5rem;
+  min-width: 300px;
+  background-color: var(--theme-off-color);
+  color: var(--theme-main-color);
+}
