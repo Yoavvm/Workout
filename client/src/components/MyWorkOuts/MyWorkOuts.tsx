@@ -1,7 +1,9 @@
-import React from 'react'
-import { WorkOut } from '../../redux/features/user/UserSlice';
-import { useAppSelector } from '../../redux/Hooks'
+import React, { useEffect } from 'react'
+import { activateWorkout, WorkOut } from '../../redux/features/workout/workoutSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
+import { AiFillPlayCircle } from 'react-icons/ai'
 import '../styles.css';
+import { Exercise } from '../../redux/features/exercises/ExerciseSlice';
 
 
 type WorkOutLineProps = {
@@ -15,6 +17,10 @@ const MyWorkOuts = () => {
     const userState = useAppSelector(state => state.User)
     const userWorkOuts = userState.user?.myWorkouts
 
+    useEffect(() => {
+
+    })
+
     return (
         <div className='my-workouts'>
             <div className='my-workouts-title'>
@@ -24,8 +30,8 @@ const MyWorkOuts = () => {
             <div className='my-workouts-container'>
                 {userWorkOuts?.map(((workOut: WorkOut) => {
                     return (
-                        
-                        <Workout workOut={workOut} key={"workout" + workOut.name}  />
+
+                        <Workout workOut={workOut} key={"workout" + workOut.name} />
                     )
                 }))}
             </div>
@@ -41,12 +47,36 @@ const MyWorkOuts = () => {
 
 
 
-const Workout = ({workOut}: WorkOutLineProps) => {
+const Workout = ({ workOut }: WorkOutLineProps) => {
 
-    console.log(workOut)
+    const exerciseState = useAppSelector(state => state.Exercises)
+
+
+    const dispatch = useAppDispatch()
+
+    const buildWorkout = () => {
+        const activeWorkout = workOut.exercises.map((userExercise: string) => {
+            return exerciseState.exercises.find((exercise: Exercise) => {
+                return exercise._id == userExercise
+                
+            })
+        })
+        return activeWorkout
+    }
+
+    const onPlayClicked = () => {
+        const activatedWorkout = buildWorkout();
+        console.log({activatedWorkout})
+        dispatch(activateWorkout(workOut));
+    }
+
+
     return (
-        <div className='my-workouts-box'> {workOut.name} </div>
-        )
+        <div className='my-workouts-box'>
+            <div> {workOut.name} </div>
+            <div onClick={onPlayClicked}><AiFillPlayCircle /></div>
+        </div>
+    )
 
 }
 

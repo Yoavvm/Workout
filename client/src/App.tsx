@@ -9,7 +9,7 @@ import AdminDashboard from './components/adminDashboard/AdminDashboard';
 import './components/styles.css'
 import Footer from "./components/footer/Footer";
 import { useEffect } from "react";
-import { useAppDispatch } from "./redux/Hooks";
+import { useAppDispatch, useAppSelector } from "./redux/Hooks";
 import getAllExercises from "./redux/features/exercises/getAllExercises";
 
 
@@ -17,10 +17,11 @@ import getAllExercises from "./redux/features/exercises/getAllExercises";
 const App = () => {
 
   const dispatch = useAppDispatch()
+  const state = useAppSelector(state => state)
 
   useEffect(() => {
     dispatch(getAllExercises())
-  })
+  }, [])
 
   return (
     <div className="app">
@@ -35,7 +36,7 @@ const App = () => {
 
         </Routes>
       </Main>
-      <Footer />
+      {state.Workout.workout && <Footer />}
 
     </div>
   );

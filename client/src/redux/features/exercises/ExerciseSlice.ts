@@ -8,7 +8,7 @@ import getAllExercises from "./getAllExercises";
 export type ExercisesState = {
     status: "loading" | "idle" | "pending",
     error: string | null,
-    exercises: [] | null
+    exercises: Exercise[]
 }
 
 export type Exercise = {
@@ -20,7 +20,7 @@ export type Exercise = {
 const initialState: ExercisesState = {
     status: "idle",
     error: null,
-    exercises: null
+    exercises: []
 }
 
 export const ExercisesReducer = createSlice(

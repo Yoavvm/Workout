@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store";
+import { WorkOut } from "../workout/workoutSlice";
 import loginRequest from './loginRequest';
 import register from './register';
 
@@ -18,11 +19,7 @@ export type User = {
     myWorkouts: WorkOut[]
 }
 
-export type WorkOut = {
-    name: string,
-    exercises: string[]
 
-}
 
 type LoginPayload = {
     token: string,
@@ -43,6 +40,7 @@ export const UserReducer = createSlice(
         reducers: {
             
             logout: (state) => {
+                axios.defaults.headers.common['Authorization'] = undefined;
                 state.user = null;
             }
         },

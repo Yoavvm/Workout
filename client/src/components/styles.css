@@ -54,9 +54,20 @@ body {
 }
 
 .footer-container {
-  display: flex;
+  display: grid;
   height: 50px;
-  background-color: rgb(55, 68, 89);
+  width: 100%;
+  background-color: var(--theme-off-color);
+  grid-template-columns: 3fr 1fr;
+}
+
+.footer-info {
+  text-align: center;
+}
+
+.footer-actions {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .login-container {
@@ -172,12 +183,14 @@ body {
 }
 
 .my-workouts {
-  border: 1px solid black;
+  margin-top: 1rem;
+  
 
 }
 
 .my-workouts-title {
-  border-bottom: 3px solid green;
+  background-color: var(--theme-off-color);
+  color: var(--theme-main-color);
   text-align: center;
 }
 
@@ -196,4 +209,8 @@ body {
   min-width: 300px;
   background-color: var(--theme-off-color);
   color: var(--theme-main-color);
+  display: flex;
+  justify-content: space-between;
 }
+
+

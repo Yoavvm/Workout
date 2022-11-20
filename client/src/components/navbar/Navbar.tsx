@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className='navbar container'>
             {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Login</button>}
             {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Register</button>}
-            {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Admin</button>}
+            {/* {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Admin</button>} */}
             {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>My Account</button>}
             {userState.user && <button onClick={onLogoutClick}>Logout</button>}
 
