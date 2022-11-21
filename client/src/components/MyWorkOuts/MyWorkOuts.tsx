@@ -65,9 +65,9 @@ const Workout = ({ workOut }: WorkOutLineProps) => {
     }
 
     const onPlayClicked = () => {
-        const activatedWorkout = buildWorkout();
-        console.log({activatedWorkout})
-        dispatch(activateWorkout(workOut));
+        const activatedWorkoutBuild = buildWorkout();
+        console.log({activatedWorkoutBuild})
+        dispatch(activateWorkout({workOut, activatedWorkoutBuild}));
     }
 
 

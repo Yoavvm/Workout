@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdOutlineSkipNext, MdOutlineSkipPrevious, MdStopCircle } from 'react-icons/md'
+import { Exercise } from '../../redux/features/exercises/ExerciseSlice'
 import { stopWorkout } from '../../redux/features/workout/workoutSlice'
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 
@@ -10,8 +11,13 @@ const Footer = () => {
   const state = useAppSelector(state => state)
   const workoutState = state.Workout
   const activeExercise = state.Workout.activeExercise;
+  const workoutBuild:Exercise[] | null = state.Workout.workoutBuild
 
-  const activeExerciseInfo = state.Exercises.exercises[activeExercise]
+  if (workoutBuild) console.log(workoutBuild[0])
+
+  useEffect(() => {
+
+  }, [workoutBuild])
 
   return (
     <div className='container footer-container'>
@@ -20,7 +26,7 @@ const Footer = () => {
           workout name: {workoutState.workout?.name}
         </div>
         <div>
-          current exercise: {}
+          current exercise: {workoutState.workoutBuild && workoutState.workoutBuild[0].exerciseName}
         </div>
       </div>
       <div className='footer-actions'>

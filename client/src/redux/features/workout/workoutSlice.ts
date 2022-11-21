@@ -8,6 +8,7 @@ export type WorkOutState = {
     status: "loading" | "idle" | "pending",
     error: string | null,
     workout: WorkOut | null,
+    workoutBuild: Exercise[] | null,
     activeExercise: number
 }
 
@@ -21,6 +22,7 @@ const initialState: WorkOutState = {
     status: "idle",
     error: null,
     workout: null,
+    workoutBuild: null,
     activeExercise: 0
 }
 
@@ -32,12 +34,14 @@ export const WorkoutReducer = createSlice(
         reducers: {
 
             activateWorkout: (state, action) => {
-                state.workout = action.payload;
+                state.workout = action.payload.workOut;
+                state.workoutBuild = action.payload.activatedWorkoutBuild;
                 state.activeExercise = 0;
             },
             stopWorkout: (state) => {
                 state.activeExercise = 0;
                 state.workout = null;
+                state.workoutBuild = null;
             },
             buildWorkout: (state) => {
                 const workOut = state.workout?.exercises.forEach((exercise: string) => {

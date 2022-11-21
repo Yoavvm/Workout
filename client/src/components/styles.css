@@ -121,7 +121,6 @@ body {
 
 .main-container {
   flex-grow: 1;
-  border: 3px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,7 +194,6 @@ body {
 }
 
 .my-workouts-container {
-  border: 3px solid purple;
   display: flex;
   padding: 1rem;
   justify-content: space-evenly;
