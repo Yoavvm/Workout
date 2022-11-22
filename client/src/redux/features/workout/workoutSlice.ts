@@ -45,17 +45,26 @@ export const WorkoutReducer = createSlice(
             },
             buildWorkout: (state) => {
                 const workOut = state.workout?.exercises.forEach((exercise: string) => {
-                    
+
                 })
             },
             nextExercise: (state) => {
+                if (state.workoutBuild && state.activeExercise < state.workoutBuild?.length - 1) {
+                    state.activeExercise++
 
+                }
+            },
+            prevExercise: (state) => {
+                if (state.workoutBuild && state.activeExercise > 0) {
+                    state.activeExercise--
+
+                }
             }
         }
     }
 );
 
-export const { activateWorkout, stopWorkout } = WorkoutReducer.actions;
+export const { activateWorkout, stopWorkout, nextExercise, prevExercise } = WorkoutReducer.actions;
 
 export const selectWorkout = (state: RootState) => state.Workout;
 

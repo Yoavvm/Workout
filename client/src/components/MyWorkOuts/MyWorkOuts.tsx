@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { activateWorkout, WorkOut } from '../../redux/features/workout/workoutSlice';
+import { activateWorkout, WorkOut, nextExercise } from '../../redux/features/workout/workoutSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import '../styles.css';
@@ -17,9 +17,6 @@ const MyWorkOuts = () => {
     const userState = useAppSelector(state => state.User)
     const userWorkOuts = userState.user?.myWorkouts
 
-    useEffect(() => {
-
-    })
 
     return (
         <div className='my-workouts'>
@@ -66,11 +63,10 @@ const Workout = ({ workOut }: WorkOutLineProps) => {
 
     const onPlayClicked = () => {
         const activatedWorkoutBuild = buildWorkout();
-        console.log({activatedWorkoutBuild})
         dispatch(activateWorkout({workOut, activatedWorkoutBuild}));
     }
 
-
+  
     return (
         <div className='my-workouts-box'>
             <div> {workOut.name} </div>

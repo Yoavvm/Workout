@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { MdOutlineSkipNext, MdOutlineSkipPrevious, MdStopCircle } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 import { Exercise } from '../../redux/features/exercises/ExerciseSlice'
-import { stopWorkout } from '../../redux/features/workout/workoutSlice'
+import { nextExercise, prevExercise, stopWorkout } from '../../redux/features/workout/workoutSlice'
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 
 
@@ -11,9 +12,8 @@ const Footer = () => {
   const state = useAppSelector(state => state)
   const workoutState = state.Workout
   const activeExercise = state.Workout.activeExercise;
-  const workoutBuild:Exercise[] | null = state.Workout.workoutBuild
+  const workoutBuild: Exercise[] | null = state.Workout.workoutBuild
 
-  if (workoutBuild) console.log(workoutBuild[0])
 
   useEffect(() => {
 
@@ -25,14 +25,16 @@ const Footer = () => {
         <div>
           workout name: {workoutState.workout?.name}
         </div>
-        <div>
-          current exercise: {workoutState.workoutBuild && workoutState.workoutBuild[0].exerciseName}
-        </div>
+        <a href={workoutState.workoutBuild ? workoutState.workoutBuild[activeExercise].videoUrl: 'https://www.youtube.com/'} target="_blank">
+          <div>
+            current exercise: {workoutState.workoutBuild && workoutState.workoutBuild[activeExercise].exerciseName}
+          </div>
+        </a>
       </div>
       <div className='footer-actions'>
-        <div className="footer-icon"><MdOutlineSkipPrevious /></div>
+        <div onClick={() => dispatch(prevExercise())} className="footer-icon"><MdOutlineSkipPrevious /></div>
         <div onClick={() => dispatch(stopWorkout())} className="footer-icon"><MdStopCircle /></div>
-        <div className="footer-icon"><MdOutlineSkipNext /></div>
+        <div onClick={() => dispatch(nextExercise())} className="footer-icon"><MdOutlineSkipNext /></div>
       </div>
     </div>
   )
