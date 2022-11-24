@@ -59,12 +59,18 @@ export const WorkoutReducer = createSlice(
                     state.activeExercise--
 
                 }
+            },
+            handleLogout: (state) => {
+                state.activeExercise = 0;
+                state.workout = null;
+                state.workoutBuild = null;
             }
+
         }
     }
 );
 
-export const { activateWorkout, stopWorkout, nextExercise, prevExercise } = WorkoutReducer.actions;
+export const { activateWorkout, stopWorkout, nextExercise, prevExercise, handleLogout } = WorkoutReducer.actions;
 
 export const selectWorkout = (state: RootState) => state.Workout;
 

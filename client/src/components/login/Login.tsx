@@ -22,18 +22,22 @@ const Login = () => {
 
     return (
         <div className='login-container container'>
-            <div>Login</div>
+            <div className='login-container-header'>Login</div>
 
-            <div className="input-field">
+            <div className="label">
                 email adress:
+            </div>
+            <div className='input-field'>
                 <input type="text" onChange={(e) => { setEmail(e.target.value) }} />
             </div>
-            <div className="input-field">
+            <div className="label">
                 password:
+            </div>
+            <div className='input-field'>
                 <input type="password" onChange={(e) => { setPassword(e.target.value) }} />
             </div>
             <div>
-                <button onClick={handleLoginClick}>Login</button>
+                <button className='login-btn' onClick={handleLoginClick}>Log In</button>
             </div>
 
         </div>
