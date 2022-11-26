@@ -1,9 +1,12 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { Portal } from '../../Portal';
 import { logout } from '../../redux/features/user/UserSlice';
 import { handleLogout } from '../../redux/features/workout/workoutSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
+import AdminDashboard from '../adminDashboard/AdminDashboard';
+
 import '../styles.css';
 
 
@@ -26,25 +29,23 @@ const Navbar = () => {
     const navigate = useNavigate();
     const userState = useAppSelector(state => state.User)
     const dispatch = useAppDispatch();
-    const navigateOnClick = ({ innerHTML }: any): void => {
-        innerHTML ? navigate(innerHTML.toLowerCase().replace(/\s+/g, '')) : navigate('')
-    }
+    const [isPortalOpen, setIsPortalOpen] = useState(false);
+
 
     const onLogoutClick = () => {
         dispatch(logout())
         dispatch(handleLogout());
-        navigateOnClick('')
     }
 
 
 
     return (
         <div className='navbar container'>
-            {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>My Account</button>}
             {navbarConfig.map(navbarItem => 
-                <button onClick={() => navigate(`${navbarItem.path}`)}>{navbarItem.title}</button>
+                <button key={navbarItem.title} onClick={() => navigate(`${navbarItem.path}`)}>{navbarItem.title}</button>
             )}
-
+            <button onClick={() => setIsPortalOpen(true)}>Open Modal</button>
+            <Portal open={isPortalOpen} children={<AdminDashboard/>} onClose={() => setIsPortalOpen(false)}></Portal>
         </div>
     )
 }
