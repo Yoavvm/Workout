@@ -6,6 +6,21 @@ import { handleLogout } from '../../redux/features/workout/workoutSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
 import '../styles.css';
 
+
+type navbarConfigItem = {
+    title: string,
+    path: string,
+
+}
+
+const navbarConfig: navbarConfigItem[] = [
+    { title: 'Login', path: 'login' },
+    { title: 'Logout', path: '' },
+    { title: 'Register', path: 'register' },
+    { title: 'Admin', path: 'admin' },
+    { title: 'My Account', path: 'myaccount' },
+]
+
 const Navbar = () => {
 
     const navigate = useNavigate();
@@ -25,11 +40,10 @@ const Navbar = () => {
 
     return (
         <div className='navbar container'>
-            {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Login</button>}
-            {!userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Register</button>}
-            {/* {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>Admin</button>} */}
             {userState.user && <button onClick={(e) => navigateOnClick(e.target)}>My Account</button>}
-            {userState.user && <button onClick={onLogoutClick}>Logout</button>}
+            {navbarConfig.map(navbarItem => 
+                <button onClick={() => navigate(`${navbarItem.path}`)}>{navbarItem.title}</button>
+            )}
 
         </div>
     )
