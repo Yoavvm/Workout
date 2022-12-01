@@ -9,7 +9,12 @@ import register from './register';
 export type UserState = {
     status: "loading" | "idle" | "pending",
     error: string | null,
-    user: User | null
+    userData: UserData | null
+}
+
+export type UserData = {
+    token:string,
+    user: User
 }
 
 export type User = {
@@ -23,13 +28,13 @@ export type User = {
 
 type LoginPayload = {
     token: string,
-    userData: User
+    userData: UserData
 }
 
 const initialState: UserState = {
     status: "idle",
     error: null,
-    user: null
+    userData: null
 }
 
 export const UserReducer = createSlice(
@@ -41,18 +46,19 @@ export const UserReducer = createSlice(
             
             logout: (state) => {
                 axios.defaults.headers.common['Authorization'] = undefined;
-                state.user = null;
+                state.userData = null;
             }
         },
         extraReducers: (builder) => {
-            builder.addCase(loginRequest.fulfilled, (state, action:PayloadAction<LoginPayload>) => {
+            builder.addCase(loginRequest.fulfilled, (state, action:PayloadAction<UserData>) => {
                 console.log(action.payload)
+                
                 axios.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`
-                state.user = action.payload.userData
+                state.userData = action.payload
 
             })
             builder.addCase(register.fulfilled, (state, action) => {
-                state.user = action.payload
+                state.userData = action.payload
 
             })
         },

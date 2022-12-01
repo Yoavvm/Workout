@@ -3,12 +3,20 @@ import createExercise from '../../redux/features/exercises/createExercise'
 import { useAppDispatch } from '../../redux/Hooks'
 import '../styles.css';
 
+type Props = {
+  exerciseName?:string,
+  videoUrl?: string,
+} | null
 
-const CreateExercise = () => {
+const CreateExercise = (props:Props) => {
 
   const dispatch = useAppDispatch()
   const [exerciseName, setExerciseName] = useState('')
   const [videoUrl, setVideoUrl] = useState('')
+
+  const handleSubmit = () => {
+    dispatch(createExercise({ exerciseName, videoUrl }))
+  }
 
 
   return (
@@ -19,12 +27,11 @@ const CreateExercise = () => {
       </div>
       <div className='create-container-line'>
         exercise Url: <input onChange={(e) => { setVideoUrl(e.target.value) }} type="text" />
-
       </div>
       <div className='create-container-line'>
 
       <div className='btn-container'>
-        <button onClick={() => dispatch(createExercise({ exerciseName, videoUrl }))}>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
       </div>
     </div>

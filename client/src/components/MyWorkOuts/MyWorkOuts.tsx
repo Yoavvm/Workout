@@ -15,7 +15,7 @@ const MyWorkOuts = () => {
 
 
     const userState = useAppSelector(state => state.User)
-    const userWorkOuts = userState.user?.myWorkouts
+    const userWorkOuts = userState.userData?.user?.myWorkouts
 
 
     return (

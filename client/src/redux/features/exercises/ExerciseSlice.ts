@@ -3,6 +3,7 @@ import { RootState } from "../../store";
 import createExercise from "./createExercise";
 import deleteExercise from "./deleteExercise";
 import getAllExercises from "./getAllExercises";
+import editExercise from "./editExercise";
 
 
 export type ExercisesState = {
@@ -38,6 +39,9 @@ export const ExercisesReducer = createSlice(
                 state.exercises = action.payload
             })
             builder.addCase(deleteExercise.fulfilled, (state, action: PayloadAction<any>) => {
+                state.exercises = action.payload
+            })
+            builder.addCase(editExercise.fulfilled, (state, action: PayloadAction<any>) => {
                 state.exercises = action.payload
             })
 

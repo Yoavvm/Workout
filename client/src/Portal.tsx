@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import ReactDom from 'react-dom'
-import { JsxElement } from 'typescript'
+import './components/styles.css'
+
 
 type Props = {
-    children: any,
+    children: JSX.Element,
     open: boolean,
     onClose: any
 }
@@ -23,8 +24,9 @@ export const Portal = ({ children, open, onClose }: Props) => {
 
 
     return ReactDom.createPortal(
-        <div onClick={() => onClose()}>
-            {children}
+        <div>
+            <div className='modal-background' onClick={() => onClose()}></div>
+            <div className='modal-content'>{children}</div>
         </div>, portal
     )
 }
